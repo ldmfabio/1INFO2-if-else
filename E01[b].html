@@ -9,12 +9,27 @@
     */
 
     //ENTRADA
-
+    let remuneracaoMensal = Number(prompt("Qual a sua remuneração mensal?"))
+    const auxilioTransporte = prompt("Deseja receber auxílio transporte? (S-Sim | N-Não)").toUpperCase()
+    const veiculoProprio = prompt("Você utiliza veículo próprio? (S-Sim | N-Não)").toUpperCase()
 
     //PROCESSAMENTO
+    let mensagemFinal = ``
+    if (auxilioTransporte === "S") {
+        const descontoTransporte = remuneracaoMensal * 0.06    
 
-    
+        if (veiculoProprio === "S") valorAuxilioTransporte = 200
+        else valorAuxilioTransporte = 150
+
+        remuneracaoMensal = remuneracaoMensal - descontoTransporte + valorAuxilioTransporte
+
+        mensagemFinal += `A remuneração total será de R$ ${remuneracaoMensal.toFixed(2)}. O profissional deseja receber auxílio transporte, com desconto de 6% na remuneração inicial, que será de R$ ${descontoTransporte.toFixed(2)}.`
+    }
+    else {
+        mensagemFinal += `A remuneração total será de ${remuneracaoMensal.toFixed(2)}. O profissional não deseja receber auxílio transporte.`
+    }
+
     //SAÍDA
-
+    document.write(mensagemFinal)
 
 </script>

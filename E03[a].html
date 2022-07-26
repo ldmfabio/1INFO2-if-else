@@ -8,12 +8,31 @@
     */
 
     //ENTRADA
-
+    const horasPorDia = Number(prompt("Quantas horas você consegue viajar por dia?"))
+    const horasTotalViagem = Number(prompt("Quantas horas durará toda a viagem?"))
+    const custoDiaria = 150
 
     //PROCESSAMENTO
+    let custoTotalViagem = 0
+    let mensagemFinal = ``
+    const diasViagem = Math.ceil(horasTotalViagem / horasPorDia)
+    if (diasViagem === 1) {
+        mensagemFinal += `A viagem demorará apenas um dia. Por isso não haverá adicional no valor da viagem! O preço final da viagem será de R$ 150.00.`
+    }
+    else if (diasViagem <= 3) {
+        custoTotalViagem = custoDiaria * diasViagem * 1.15
+        mensagemFinal += `A viagem demorará ${diasViagem} dias. Haverá um acréscimo de 15% no preço da diária. O preço final da viagem será de ${custoTotalViagem.toFixed(2)}.`
+    }
+    else if (diasViagem <= 5) {
+        custoTotalViagem = custoDiaria * diasViagem * 1.10
+        mensagemFinal += `A viagem demorará ${diasViagem} dias. Haverá um acréscimo de 10% no preço da diária. O preço final da viagem será de ${custoTotalViagem.toFixed(2)}.`
+    }
+    else {
+        custoTotalViagem = custoDiaria * diasViagem * 1.05
+        mensagemFinal += `A viagem demorará ${diasViagem} dias. Haverá um acréscimo de 5% no preço da diária. O preço final da viagem será de ${custoTotalViagem.toFixed(2)}`
+    }
 
-    
     //SAÍDA
-
+    document.write(mensagemFinal)
 
 </script>

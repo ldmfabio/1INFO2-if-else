@@ -12,12 +12,31 @@
     */
 
     //ENTRADA
-
+    const precoDolar = Number(prompt("Qual o preço do dólar (em reais)?"))
+    const precoEuro = Number(prompt("Qual o preço do euro (em reais)?"))
+    const precoEUA = Number(prompt("Qual o preço da passagem aérea para os EUA (em dólar)?"))
+    const precoPortugal = Number(prompt("Qual o preço da passagem aérea para Portugal (em euros)?"))
+    const reaisDisponiveis = Number(prompt("Quantos reais você tem disponível para gastar na viagem?"))
 
     //PROCESSAMENTO
+    let mensagemFinal = ``
+    const dolaresDisponiveis = reaisDisponiveis / precoDolar
+    const eurosDisponiveis = reaisDisponiveis / precoEuro
 
-    
+    if (eurosDisponiveis >= precoPortugal || dolaresDisponiveis >= precoEUA) {
+        if (eurosDisponiveis >= precoPortugal) {
+            const eurosSobrando = eurosDisponiveis - precoPortugal
+            mensagemFinal += `Você poderá viajar para Portugal! Ainda sobram ${eurosSobrando.toFixed(2)} euros.<br>`
+        }
+        if (dolaresDisponiveis >= precoEUA) {
+            const dolaresSobrando = dolaresDisponiveis - precoEUA
+            mensagemFinal += `Você poderá viajar para os EUA! Ainda sobram ${dolaresSobrando.toFixed(2)} dólares.`
+        }
+    }
+    else {
+        mensagemFinal += `Infelizmente você não possui dinheiro disponível para viajar para Portugal ou EUA.`
+    }
     //SAÍDA
-
+    document.write(mensagemFinal)
 
 </script>

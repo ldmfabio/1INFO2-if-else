@@ -11,12 +11,27 @@
     */
 
     //ENTRADA
-
+    const aulasSemana = parseInt(prompt("Quantas aulas você leciona por semana?"))
+    const projetosOrienta = parseInt(prompt("Quantos projetos você orienta?"))
+    const horasSemana = 40
 
     //PROCESSAMENTO
+    let mensagemFinal = ``
+    const horasProjeto = projetosOrienta * 3
+    const horasAula = aulasSemana * 1.5
+    const horasTrabalhadas = horasProjeto + horasAula
+    const percHorasProjeto = horasProjeto / horasSemana * 100
+    const percHorasAula = horasAula / horasSemana * 100
 
+    if (percHorasProjeto > percHorasAula) mensagemFinal += `Pesquisador > Professor.<br>`
+    else if (percHorasAula > percHorasProjeto) mensagemFinal += `Professor > Pesquisador.<br>`
+    else mensagemFinal += `Professor = Pesquisador.<br>`
+
+    if (horasTrabalhadas <= 30) mensagemFinal += `Você precisa trabalhar mais. CH atual é de ${horasTrabalhadas.toFixed(2)} horas trabalhadas.<br>`
+    else if (horasTrabalhadas <= 40) mensagemFinal += `Você está cumprindo o seu contrato. CH atual é de ${horasTrabalhadas.toFixed(2)} horas trabalhadas.<br>`
+    else mensagemFinal += `O contrato precisa ser revisado! CH atual é de ${horasTrabalhadas.toFixed(2)} horas trabalhadas.<br>`
     
     //SAÍDA
-
+    document.write(mensagemFinal)
 
 </script>

@@ -9,12 +9,26 @@
     */
 
     //ENTRADA
-
+    const baixaComplexidade = parseInt(prompt("Quantas consultas de baixa complexidade você atende por dia?"))
+    const mediaComplexidade = parseInt(prompt("Quantas consultas de média complexidade você atende por dia?"))
+    const altaComplexidade = parseInt(prompt("Quantas consultas de alta complexidade você atende por dia?"))
 
     //PROCESSAMENTO
+    const minutosBaixa = baixaComplexidade * 15
+    const minutosMedia = mediaComplexidade * 40
+    const minutosAlta = altaComplexidade * 75
+    const minutosTrabalhados = minutosBaixa + minutosMedia + minutosAlta
+    const horasTrabalhadas = Math.floor(minutosTrabalhados / 60)
+    const minutosAlemHoras = minutosTrabalhados % 60
+    let valorHora = 0
 
+    if (minutosTrabalhados <= 480) valorHora = 50
+    else if (minutosTrabalhados <= 600) valorHora = 75
+    else valorHora = 90
     
-    //SAÍDA
+    const salarioFinal = (valorHora * horasTrabalhadas) + (minutosAlemHoras / 60 * valorHora)
 
+    //SAÍDA
+    document.write(`O veterinário trabalhou por ${horasTrabalhadas} horas e ${minutosAlemHoras} minutos. O valor total que o veterinário receberá será de R$ ${salarioFinal.toFixed(2)}.`)
 
 </script>

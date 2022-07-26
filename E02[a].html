@@ -7,12 +7,28 @@
     */
 
     //ENTRADA
-
+    const litrosAbastecer = Number(prompt("Quantos litros deseja abastecer?"))
+    const valorLitro = Number(prompt("Qual o preço do litro do combustível?"))
+    const dinheiroDisponivel = Number(prompt("Quanto dinheiro você tem para pagar?"))
 
     //PROCESSAMENTO
-
+    let mensagemFinal = ``
+    if (litrosAbastecer > 40) {
+        mensagemFinal += `Não é possível abastecer mais de 40 litros de combustível!`
+    }
+    else {
+        const custoAbastecimento = litrosAbastecer * valorLitro
+        if (custoAbastecimento > dinheiroDisponivel) {
+            const vaiFaltar = custoAbastecimento - dinheiroDisponivel
+            mensagemFinal += `Não é possível abastecer, pois você possui R$ ${dinheiroDisponivel.toFixed(2)} e o abastecimento custará R$ ${custoAbastecimento.toFixed(2)}. Serão necessários mais R$ ${vaiFaltar.toFixed(2)}!`
+        }
+        else if (dinheiroDisponivel >= custoAbastecimento) {
+            const vaiSobrar = dinheiroDisponivel - custoAbastecimento
+            mensagemFinal += `Prossiga com o abastecimento, pois você possui R$ ${dinheiroDisponivel.toFixed(2)} e o abastecimento custará R$ ${custoAbastecimento.toFixed(2)}. Sobrarão R$ ${vaiSobrar.toFixed(2)}!`
+        }
+    }
     
     //SAÍDA
-
+    document.write(mensagemFinal)
 
 </script>

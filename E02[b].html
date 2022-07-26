@@ -7,12 +7,16 @@
     */
 
     //ENTRADA
-
+    const anosExperiencia = parseInt(prompt("Quantos anos de experiência você possui?"))
+    const projetosDesenvolvidos = parseInt(prompt("Quantos projetos você já desenvolveu?"))
 
     //PROCESSAMENTO
-
+    let nivelProgramador = ``
+    if (projetosDesenvolvidos <= 10 || anosExperiencia < 5) nivelProgramador = `Programador Juninho`
+    else if (anosExperiencia <= 10 || projetosDesenvolvidos <= 20) nivelProgramador = `Programador Pleno`
+    else nivelProgramador = `Programador Sênior`
     
     //SAÍDA
-
+    document.write(`O Nível do Programador é ${nivelProgramador}. Ele possui ${anosExperiencia} e já participou de ${projetosDesenvolvidos}.`)
 
 </script>
